@@ -1,0 +1,13 @@
+
+- qmk_firmware is managed as a git subtree
+- For the submodules inside qmk_firmware, I copied the .gitmodules from
+  qmk_firmware in the root directory, and fixed the paths. (git modules must
+  be defined in the root of the repository).
+
+To build:
+
+    docker-compose run build
+
+To flash:
+
+    docker-compose run flash
