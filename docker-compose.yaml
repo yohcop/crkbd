@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  build:
+    build: ./docker/
+    privileged: true
+    volumes:
+      - "./qmk_firmware:/qmk"
+    command: "qmk compile --keyboard=crkbd --keymap=default"
+
+  flash:
+    build: ./docker
+    privileged: true
+    volumes:
+      - "./qmk_firmware:/qmk"
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    command: "qmk flash"
