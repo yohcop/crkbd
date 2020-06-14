@@ -1,17 +1,24 @@
 version: "2"
 
 services:
+  json2c:
+    build: ./docker/
+    privileged: true
+    volumes:
+      - "./qmk_firmware:/qmk"
+    command: "qmk json2c -o keyboards/crkbd/keymaps/yohcop/generated_keymap.c keyboards/crkbd/keymaps/yohcop/layout.json"
+
   build:
     build: ./docker/
     privileged: true
     volumes:
       - "./qmk_firmware:/qmk"
-    command: "qmk compile --keyboard=crkbd --keymap=default"
+    command: "qmk compile --keyboard=crkbd --keymap=yohcop"
 
   flash:
     build: ./docker
     privileged: true
     volumes:
       - "./qmk_firmware:/qmk"
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
-    command: "qmk flash"
+      - "/dev/:/dev/"
+    command: "qmk flash --keyboard=crkbd --keymap=yohcop"

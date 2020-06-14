@@ -9,6 +9,7 @@ RUN apt-get update \
     gcc-avr \
     binutils-avr \
     avr-libc \
+    avrdude \
     dfu-programmer \
     dfu-util \
     gcc-arm-none-eabi \
