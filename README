@@ -6,8 +6,9 @@
 
 To build:
 
+    docker-compose run json2c
     docker-compose run build
 
-To flash:
+To flash (do this on both halves, when asking for reset, Fn1+2-esc)
 
     docker-compose run flash
